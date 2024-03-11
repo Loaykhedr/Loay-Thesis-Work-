@@ -49,3 +49,59 @@ function mySelf(xPos, yPos, zPos, xRot, yRot, zRot){
 	this.yRot = yRot;
 	this.zRot = zRot;
 }
+
+var me = new mySelf(0,0,0,0,0,0);
+
+var fwd = 0;
+var bcwd = 0; 
+var lft = 0;
+var rght = 0;
+
+function move(ev, vel){
+	if(ev.keyCode == 87){
+		fwd = vel;
+	}
+	if(ev.keyCode == 83){
+		bcwd = vel;
+	}
+	if(ev.keyCode == 65){
+		lft = vel;
+	}
+	if(ev.keyCode == 68){
+		rght = vel;
+	}
+}
+
+document.addEventListener("keydown", (event) => {this.move(event, 5)});
+document.addEventListener("keyup", (event) => {this.move(event, 0)});
+
+
+
+function drawWorld(){
+	let dz = fwd - bcwd;
+	let dx = lft - rght;
+	me.xPos += dx;
+	me.zPos += dz;
+
+	world.style.transform = `translate3d(
+		${
+			me.xPos
+		}px, 
+		${
+			me.yPos
+		}px, 
+		${
+			me.zPos
+		}px) 
+		rotateX(${
+			me.xRot
+		}deg)
+		rotateY(${
+			me.yRot
+		}deg) 
+		rotateZ(${
+			me.zRot
+		}deg)`;
+}
+
+game = setInterval(drawWorld, 10);

@@ -40,3 +40,12 @@ function createMap(){
 }
 
 createMap();
+
+function mySelf(xPos, yPos, zPos, xRot, yRot, zRot){
+	this.xPos = xPos;
+	this.yPos = yPos;
+	this.zPos = zPos;
+	this.xRot = xRot;
+	this.yRot = yRot;
+	this.zRot = zRot;
+}

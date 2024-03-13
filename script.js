@@ -53,6 +53,8 @@ function mySelf(xPos, yPos, zPos, xRot, yRot, zRot){
 var me = new mySelf(0,0,0,0,0,0);
 
 var deg = Math.PI/180;
+var lock = false;
+var canlock = true; 
 
 var fwd = 0;
 var bcwd = 0; 
@@ -84,6 +86,14 @@ document.addEventListener("mousemove", (event)=>{
 	mouseY = event.movementY;
 });
 
+document.addEventListener("pointerlockchange", (event)=>{
+	lock = !lock;
+});
+
+container.onclick = function(){
+	if (!lock && canlock) container.requestPointerLock();
+};
+
 
 
 
@@ -103,7 +113,9 @@ function drawWorld(){
 	me.xPos += dx;
 	me.zPos += dz;
 
-	me.yRot += dry;
+	if (lock) {
+        me.yRot += dry
+    };
 
 	//world.style.transform = `translate3d(
      world.style.transform = `

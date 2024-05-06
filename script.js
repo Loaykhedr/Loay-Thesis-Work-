@@ -4,9 +4,11 @@ var world = document.getElementById('world');
 var map = [
 //	 xPos, yPos, zPos, xRot, yRot, zRot, Width, Height
 // floor
-	[0, 100 ,0, 90, 0, 0, 2000, 2000, "grey"],
-//walls
+	[0, 100 ,0, 90, 0, 0, 2000, 2000, "url('IMG/floor.jpg')"],
+//wall1
 	[0, 0 ,-1000, 0, 0, 0, 2000, 200, "orange"],
+//wall2
+    [0, 0 ,1000, 0, 0, 0, 2000, 200, "orange"],
 //right wall 
 	[1000, 0 ,0, 0, 90, 0, 2000, 200, "yellow"],
 //left wall 

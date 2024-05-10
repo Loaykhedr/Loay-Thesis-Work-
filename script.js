@@ -4,15 +4,24 @@ var world = document.getElementById('world');
 var map = [
 //	 xPos, yPos, zPos, xRot, yRot, zRot, Width, Height
 // floor
-	[0, 100 ,0, 90, 0, 0, 2000, 2000, "url('IMG/floor.jpg')"],
+	[0, 100 ,0, 90, 0, 0, 2000, 2000, "url('IMG-FLOOR/floor.jpg')"],
 //wall1
-	[0, 0 ,-1000, 0, 0, 0, 2000, 200, "orange"],
+	[0, 0 ,-1000, 0, 0, 0, 2000, 200, "url('IMG-WALLS/walls.jpg')"],
 //wall2
-    [0, 0 ,1000, 0, 0, 0, 2000, 200, "orange"],
+    [0, 0 ,1000, 0, 0, 0, 2000, 200, "url('IMG-WALLS/walls.jpg')"],
 //right wall 
-	[1000, 0 ,0, 0, 90, 0, 2000, 200, "yellow"],
+	[1000, 0 ,0, 0, 90, 0, 2000, 200, "url('IMG-WALLS/walls.jpg')"],
 //left wall 
-	[-1000, 0 ,0, 0, -90, 0, 2000, 200, "green"]
+	[-1000, 0 ,0, 0, -90, 0, 2000, 200, "url('IMG-WALLS/walls.jpg')"],
+// Additional walls for the maze 
+    [0, 0, 500, 0, 0, 0, 800, 200, "url('IMG-WALLS/walls.jpg')"], 
+    [500, 0, 0, 0, 90, 0, 800, 200, "url('IMG-WALLS/walls.jpg')"], 
+    [-500, 0, 0, 0, 90, 0, 800, 200, "url('IMG-WALLS/walls.jpg')"],
+    [0, 0, -500, 0, 0, 0, 800, 200, "url('IMG-WALLS/walls.jpg')"], 
+    [500, 0, 500, 0, 0, 0, 800, 200, "url('IMG-WALLS/walls.jpg')"],
+    [-500, 0, -500, 0, 0, 0, 800, 200, "url('IMG-WALLS/walls.jpg')"], 
+    [500, 0, -500, 0, 0, 0, 800, 200, "url('IMG-WALLS/walls.jpg')"], 
+    [-500, 0, 500, 0, 0, 0, 800, 200, "url('IMG-WALLS/walls.jpg')"], 
 ];
 
 function createMap(){
@@ -23,7 +32,7 @@ function createMap(){
 		newElement.style.width =`${map[i][6]}px`;
 		newElement.style.height = `${map[i][7]}px`;
 		newElement.style.background = map[i][8];
-		newElement.style.opacity = 0.5;
+		newElement.style.opacity = 10;
 		newElement.style.transform = `translate3d(
 		${
 			parseInt(getComputedStyle(world).width,10)/2 - map[i][6]/2 + map[i][0]
